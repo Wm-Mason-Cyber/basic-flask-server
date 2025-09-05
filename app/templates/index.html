@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Flask Basics Demo</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <h1>Flask Basics Demo</h1>
+    <nav>
+        <ul>
+            <li><a href="/vulnerable_reflected?q=test">Reflected XSS (Vulnerable)</a></li>
+            <li><a href="/safe_reflected?q=test">Reflected XSS (Safe)</a></li>
+            <li><a href="/stored_vuln">Stored XSS (Vulnerable)</a></li>
+            <li><a href="/stored_safe">Stored XSS (Safe)</a></li>
+            <li><a href="/sql_vuln?name=test">SQLi (Vulnerable)</a></li>
+            <li><a href="/sql_safe?name=test">SQLi (Safe)</a></li>
+            <li><a href="/api/search?q=test">API Demo</a></li>
+        </ul>
+    </nav>
+    <p>Welcome to the Flask basics and security demo app.</p>
+</body>
+</html>
