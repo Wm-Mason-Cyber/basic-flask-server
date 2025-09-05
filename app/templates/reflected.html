@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Reflected XSS Demo</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <h1>Reflected XSS Demo</h1>
+    <form method="get" action="">
+        <label>q: <input name="q" value="{{ q }}"></label>
+        <button type="submit">Submit</button>
+    </form>
+
+    <h2>Output</h2>
+    {% if safe %}
+        <!-- Jinja will autoescape by default; show escaped output -->
+        <div id="output">{{ q }}</div>
+    {% else %}
+        <!-- Intentionally mark as safe to show vulnerability. -->
+        <div id="output">{{ q | safe }}</div>
+    {% endif %}
+
+    <p><a href="/">Back</a></p>
+</body>
+</html>

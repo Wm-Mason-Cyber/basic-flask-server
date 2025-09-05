@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SQL Demo</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <h1>SQL Demo</h1>
+    <form method="get" action="">
+        <label>name: <input name="name"></label>
+        <button type="submit">Search</button>
+    </form>
+
+    <h2>Query Results</h2>
+    {% if vuln %}
+        <p><strong>VULNERABLE MODE</strong> — constructed query: {{ query }}</p>
+    {% endif %}
+    <ul>
+    {% for id, name in rows %}
+        <li>{{ id }} — {{ name }}</li>
+    {% else %}
+        <li><em>No results</em></li>
+    {% endfor %}
+    </ul>
+
+    <p><a href="/">Back</a></p>
+</body>
+</html>

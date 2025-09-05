@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Stored XSS Demo</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <h1>Stored XSS Demo</h1>
+    <form method="post" action="">
+        <label>Message: <input name="msg"></label>
+        <button type="submit">Submit</button>
+    </form>
+
+    <h2>Messages</h2>
+    <ul>
+    {% for m in messages %}
+        {% if safe %}
+            <li>{{ m.msg }}</li>
+        {% else %}
+            <!-- Intentionally render unescaped to show vulnerability -->
+            <li>{{ m.msg | safe }}</li>
+        {% endif %}
+    {% else %}
+        <li><em>No messages</em></li>
+    {% endfor %}
+    </ul>
+
+    <p><a href="/">Back</a></p>
+</body>
+</html>
