@@ -25,6 +25,49 @@ Instructor answer
 - `/vulnerable_reflected` executes the script because the server returns the raw input into HTML without escaping.
 - `/safe_reflected` does not execute the script because Jinja2 auto-escaping (or explicit escaping) renders the input as text (`&lt;script&gt;...`).
 
+--
+
+Beginner-friendly additions (language & steps)
+
+Before you start
+- This server runs on your computer. You will open web pages in your browser (Chrome, Firefox, or Edge).
+- If a step tells you to "open DevTools", press F12 or right-click the page and choose "Inspect".
+
+What is XSS in one sentence?
+- XSS (Cross-Site Scripting) occurs when a web page includes text from a user that the browser treats as code to run. If the site doesn't make user text safe, the browser may run it.
+
+Very explicit steps (copy-paste friendly)
+
+1) Reflected XSS quick test
+ - In your browser address bar, paste exactly this URL and press Enter:
+	 http://localhost:5000/vulnerable_reflected?q=%3Cscript%3Ealert(1)%3C%2Fscript%3E
+ - You should see a popup alert with "1" if the page is vulnerable.
+ - Now paste this URL:
+	 http://localhost:5000/safe_reflected?q=%3Cscript%3Ealert(1)%3C%2Fscript%3E
+ - You should NOT see the popup. Instead, the page should show the characters &lt;script&gt;alert(1)&lt;/script&gt; as text.
+
+2) Stored XSS quick test
+ - Open http://localhost:5000/stored_vuln
+ - In the message box type exactly: <script>console.log("stored-xss")</script>
+ - Submit the form. Look at the page or open DevTools → Console. You should see the console message or other evidence the script ran.
+ - Now open http://localhost:5000/stored_safe and submit the same message. The script should not run; you should see the text instead.
+
+3) SQLi quick test
+ - Open (paste) in your browser:
+	 http://localhost:5000/sql_vuln?name=%27%20OR%20%271%27%3D%271
+ - The vulnerable page may list multiple users (Alice, Bob) even though you did not search for them — this shows that the input changed the SQL query.
+ - Now open:
+	 http://localhost:5000/sql_safe?name=%27%20OR%20%271%27%3D%271
+ - The safe page should not return additional rows.
+
+Safety reminder for students
+- These exercises are safe to run on your own computer in class, but do NOT try these attacks on sites you do not own or have permission to test.
+
+Teacher tips
+- Ask students to explain in plain English why the vulnerable pages behaved differently.
+- Have students view page source and network requests so they learn where data flows.
+- Use `bash scripts/reset_data.sh` between exercises to ensure a clean state.
+
 Exercise 2 — Stored XSS (15 minutes)
 
 Goal: Understand persistent stored XSS and why stored data must be escaped when rendered.
