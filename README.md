@@ -28,6 +28,12 @@ source venv/bin/activate
 PYTHONPATH=. pytest -q
 ```
 
+Run with Docker Compose
+
+```bash
+docker compose up --build
+```
+
 Reset demo data
 
 ```

@@ -8,3 +8,4 @@ services:
       - .:/app
     environment:
       - FLASK_APP=app:create_app
+    entrypoint: ["/bin/sh", "-c", "python3 scripts/init_db.py && gunicorn --bind 0.0.0.0:8000 app:create_app()"]
