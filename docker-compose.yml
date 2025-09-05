@@ -12,7 +12,7 @@ services:
       - -c
       - "python3 scripts/init_db.py && gunicorn --bind 0.0.0.0:8000 'app:create_app()'"
     healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:8000/"]
+      test: ["CMD", "python3", "-c", "import urllib.request,sys; r=urllib.request.urlopen('http://localhost:8000/', timeout=2); sys.exit(0 if r.getcode()==200 else 1)"]
       interval: 10s
       timeout: 3s
       retries: 5
