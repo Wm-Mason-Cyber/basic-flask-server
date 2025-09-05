@@ -9,4 +9,7 @@ Commit log (suggested history)
 - ci: add GitHub Actions to run tests
 - docs: add worksheet and teacher notes
 
+- chore: add healthwait helper script for docker compose readiness
+- chore: bump patch releases for healthcheck fixes (v0.1.1 -> v0.1.2)
+
 Note: commits were created in small logical steps during scaffolding. You may want to convert these into actual git commits locally.

@@ -75,3 +75,23 @@ How to verify
 2. Run the test suite locally:
 
    PYTHONPATH=. pytest -q
+
+Patch v0.1.2 — healthwait helper and compose fix
+
+Date: 2025-09-05
+
+Changes
+-------
+- Add `scripts/healthwait.sh` to wait for Docker Compose services to report healthy before proceeding with automation.
+- Fix healthcheck command to use Python (available in base image) and correct compose YAML errors.
+
+How to verify
+-------------
+1. Start Docker Compose in detached mode and wait for the container to be healthy using the helper:
+
+   docker compose up --build -d
+   ./scripts/healthwait.sh basic-flask-server-web-1
+
+2. Run the test suite locally:
+
+   PYTHONPATH=. pytest -q

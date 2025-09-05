@@ -41,3 +41,14 @@ bash scripts/reset_data.sh
 ```
 
 See `docs/WORKSHEET.md` for lab steps and the instructor answer key.
+
+## Technologies used
+
+Below are the logos of the main technologies used in this project to help students recognize them.
+
+<p align="left">
+	<img alt="Python" src="https://upload.wikimedia.org/wikipedia/commons/c/c3/Python-logo-notext.svg" height="72" />
+	<img alt="Flask" src="https://upload.wikimedia.org/wikipedia/commons/3/3c/Flask_logo.svg" height="72" />
+	<img alt="SQLite" src="https://upload.wikimedia.org/wikipedia/commons/3/38/SQLite370.svg" height="72" />
+	<img alt="Docker" src="https://upload.wikimedia.org/wikipedia/commons/4/4e/Docker_%28container_engine%29_logo.svg" height="72" />
+</p>
